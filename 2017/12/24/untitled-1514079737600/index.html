@@ -96,23 +96,18 @@
 
 
 
-<meta name="description" content="Neo4j 是一个NoSQL的图形数据库（Graph Database）。Neo4j使用图（graph）相关的概念来描述数据模型，把数据保存为图中的节点以及节点之间的关系。很多应用中数据之间的关系，可以很直接地使用图中节点和关系的概念来建模。对于这样的应用，使用 Neo4j 来存储数据会非常的自然，要优于使用关系数据库。  Neo4j安装 Neo4j 版本：Neo4j分社区版和企业版企业版支持集群">
+<meta name="description" content="学好Cypher是学好Neo4j的关键，也是核心所在！  Cypher语言介绍“Cypher”是一个描述性的类Sql的图操作语言。相当于关系数据库的Sql，可见其重要性！其语法针对图的特点而设计，非常方便和灵活。没有Join，是一大特点！ Cypher是一个申明式查询语言，适合于开发者和在数据库上做点对点模式（ad-hoc）查询。 Cypher通过一系列不同的方法和建立于确定的实践为表达查询而激发">
 <meta name="keywords" content="Neo4j">
 <meta property="og:type" content="article">
-<meta property="og:title" content="图数据库Neo4j学习指南2">
-<meta property="og:url" content="http://linanblog.cn/2017/12/22/图数据库Neo4j学习指南2/index.html">
+<meta property="og:title" content="图数据库Neo4j学习指南3">
+<meta property="og:url" content="http://linanblog.cn/2017/12/24/untitled-1514079737600/index.html">
 <meta property="og:site_name" content="学无止境">
-<meta property="og:description" content="Neo4j 是一个NoSQL的图形数据库（Graph Database）。Neo4j使用图（graph）相关的概念来描述数据模型，把数据保存为图中的节点以及节点之间的关系。很多应用中数据之间的关系，可以很直接地使用图中节点和关系的概念来建模。对于这样的应用，使用 Neo4j 来存储数据会非常的自然，要优于使用关系数据库。  Neo4j安装 Neo4j 版本：Neo4j分社区版和企业版企业版支持集群">
+<meta property="og:description" content="学好Cypher是学好Neo4j的关键，也是核心所在！  Cypher语言介绍“Cypher”是一个描述性的类Sql的图操作语言。相当于关系数据库的Sql，可见其重要性！其语法针对图的特点而设计，非常方便和灵活。没有Join，是一大特点！ Cypher是一个申明式查询语言，适合于开发者和在数据库上做点对点模式（ad-hoc）查询。 Cypher通过一系列不同的方法和建立于确定的实践为表达查询而激发">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://linanblog.cn/2017/12/22/图数据库Neo4j学习指南2/登入.png">
-<meta property="og:image" content="http://linanblog.cn/2017/12/22/图数据库Neo4j学习指南2/设置.png">
-<meta property="og:image" content="http://linanblog.cn/2017/12/22/图数据库Neo4j学习指南2/图一.png">
-<meta property="og:image" content="http://linanblog.cn/2017/12/22/图数据库Neo4j学习指南2/图二.png">
-<meta property="og:updated_time" content="2017-12-24T02:18:00.554Z">
+<meta property="og:updated_time" content="2017-12-25T02:01:33.872Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="图数据库Neo4j学习指南2">
-<meta name="twitter:description" content="Neo4j 是一个NoSQL的图形数据库（Graph Database）。Neo4j使用图（graph）相关的概念来描述数据模型，把数据保存为图中的节点以及节点之间的关系。很多应用中数据之间的关系，可以很直接地使用图中节点和关系的概念来建模。对于这样的应用，使用 Neo4j 来存储数据会非常的自然，要优于使用关系数据库。  Neo4j安装 Neo4j 版本：Neo4j分社区版和企业版企业版支持集群">
-<meta name="twitter:image" content="http://linanblog.cn/2017/12/22/图数据库Neo4j学习指南2/登入.png">
+<meta name="twitter:title" content="图数据库Neo4j学习指南3">
+<meta name="twitter:description" content="学好Cypher是学好Neo4j的关键，也是核心所在！  Cypher语言介绍“Cypher”是一个描述性的类Sql的图操作语言。相当于关系数据库的Sql，可见其重要性！其语法针对图的特点而设计，非常方便和灵活。没有Join，是一大特点！ Cypher是一个申明式查询语言，适合于开发者和在数据库上做点对点模式（ad-hoc）查询。 Cypher通过一系列不同的方法和建立于确定的实践为表达查询而激发">
 
 
 
@@ -141,13 +136,13 @@
 
 
 
-  <link rel="canonical" href="http://linanblog.cn/2017/12/22/图数据库Neo4j学习指南2/"/>
+  <link rel="canonical" href="http://linanblog.cn/2017/12/24/untitled-1514079737600/"/>
 
 
 
 
 
-  <title>图数据库Neo4j学习指南2 | 学无止境</title>
+  <title>图数据库Neo4j学习指南3 | 学无止境</title>
   
 
 
@@ -300,7 +295,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://linanblog.cn/2017/12/22/图数据库Neo4j学习指南2/">
+    <link itemprop="mainEntityOfPage" href="http://linanblog.cn/2017/12/24/untitled-1514079737600/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Albert">
@@ -317,7 +312,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">图数据库Neo4j学习指南2</h1>
+          <h1 class="post-title" itemprop="name headline">图数据库Neo4j学习指南3</h1>
         
 
         <div class="post-meta">
@@ -329,8 +324,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-22T18:23:18+08:00">
-                2017-12-22
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-24T09:42:17+08:00">
+                2017-12-24
               </time>
             
 
@@ -389,33 +384,41 @@
       
 
       
-        <p><em>Neo4j 是一个NoSQL的图形数据库（Graph Database）。Neo4j使用图（graph）相关的概念来描述数据模型，把数据保存为图中的节点以及节点之间的关系。很多应用中数据之间的关系，可以很直接地使用图中节点和关系的概念来建模。对于这样的应用，使用 Neo4j 来存储数据会非常的自然，要优于使用关系数据库。</em> </p>
-<h2 id="Neo4j安装"><a href="#Neo4j安装" class="headerlink" title="Neo4j安装"></a>Neo4j安装</h2><p><strong><em> Neo4j 版本：</em></strong><br>Neo4j分<font color="Red">社区版</font>和<font color="Red">企业版</font><br>企业版支持集群模式，收费。<br>个人版，免费，仅单机。单机支持10亿条关系，支撑中小企业需求无压力。</p>
-<p><strong><em> Neo4j 安装步骤 </em></strong><br>1、下载Neo4j安装包，去官方网址注册下载即可。选择特定的版本。下载地址 <a href="https://neo4j.com/download/" target="_blank" rel="noopener">https://neo4j.com/download/</a></p>
-<p>2、检查System是否安装JDK8，如果没有，需要安装JDK8。</p>
-<pre><code>## example
-tar xvzf jdk-8u131-linux-x64.tar.gz
-设置JAVA环境变量
-编辑/etc/profile文件，添加下面配置信息，然后执行source /etc/profile命令使之生效。
-export JAVA_HOME=/usr/java/jdk1.8.0_131/
-export CLASSPATH=/usr/java/jdk1.8.0_131/lib
-export PATH=$AVA_HOME/bin:$PATH
-</code></pre><p>3、创建一个用户neo4j，用来管理Neo4j 。当然这不是必须的。也可以是其它账号或root账号。</p>
-<pre><code>#/usr/sbin/groupadd nosql
-#/usr/sbin/useradd -G nosql neo4j
-</code></pre><p> 4、切换到neo4j账户下，解压Neo4j压缩包。</p>
-<pre><code>## example
-su - neo4j
-tar -zxvf /tmp/neo4j-community-3.1.1-unix.tar.gz -C /home/neo4j/
-</code></pre><p> 5、设置环境变量，配置.bash_profile文件，增加下面一行，并使之生效。</p>
-<pre><code># su - neo4j
-  vi .bash_profile 
-  export PATH=/home/neo4j/neo4j-community-3.1.1/bin:$PATH #新增一行
-  source .bash_profile
-</code></pre><h2 id="Neo4j配置"><a href="#Neo4j配置" class="headerlink" title="Neo4j配置"></a>Neo4j配置</h2><p><em>Neo4j应用程序有如下主要的目录结构：<br>bin目录：用于存储Neo4j的可执行程序；<br>conf目录：用于控制Neo4j启动的配置文件；<br>data目录：用于存储核心数据库文件；<br>plugins目录：用于存储Neo4j的插件;</em></p>
-<p>配置文档存储在conf目录下，Neo4j通过配置文件neo4j.conf控制服务器的工作。默认情况下，不需要进行任意配置，就可以启动服务器。<br>启动Neo4j程序<br>./neo4j console or ./neo4j start<br>启动之后，在浏览器访问<a href="http://localhost:7474" target="_blank" rel="noopener">http://localhost:7474</a> ，默认的用户名和密码都是neo4j，neo4j 登录之后需要修改。<br><img src="/2017/12/22/图数据库Neo4j学习指南2/登入.png" alt="登入"><br>如果我们需要远程访问Neo4j的Web控制台，我们需要修改neo4j.conf配置文件的参数，如下截图所示：<br><img src="/2017/12/22/图数据库Neo4j学习指南2/设置.png" alt="设置"></p>
-<h2 id="Neo4j基本数据类型"><a href="#Neo4j基本数据类型" class="headerlink" title="Neo4j基本数据类型"></a>Neo4j基本数据类型</h2><p>在Neo4j中主要有四种数据类型：<font color="Red">Label（标签）、Node（节点）、Relationship（关系）、Property（属性）</font><br><strong> Label：对应关系DB里的表 </strong><br><strong> Node：相当于表里的每行数据，包含多个属性（列）</strong><br>图一中的圆点就是节点，图二中出现的BRAND、COUNTRY是节点的类型，用Label表示。<br><strong> Relationship：边表示两个节点之间的关系，也可以有属性，大小写区分。其他均不区分大小写。 </strong><br>图一中有方向的直线就是关系，图二中brand_country，brand_series表示两种不同关系。<br><strong> Property：Node和Relationship都会有属性。 </strong><br>图一<br><img src="/2017/12/22/图数据库Neo4j学习指南2/图一.png" alt="图一"><br>图二<br><img src="/2017/12/22/图数据库Neo4j学习指南2/图二.png" alt="图二"></p>
+        <p><strong><font color="#FF0000">学好Cypher是学好Neo4j的关键，也是核心所在！</font> </strong></p>
+<h2 id="Cypher语言介绍"><a href="#Cypher语言介绍" class="headerlink" title="Cypher语言介绍"></a>Cypher语言介绍</h2><p>“Cypher”是一个描述性的类Sql的图操作语言。相当于关系数据库的Sql，可见其重要性！其语法针对图的特点而设计，非常方便和灵活。没有Join，是一大特点！</p>
+<p>Cypher是一个申明式查询语言，适合于开发者和在数据库上做点对点模式（ad-hoc）查询。</p>
+<p>Cypher通过一系列不同的方法和建立于确定的实践为表达查询而激发的。许多关键字如like和order by是受SQL的启发。正则表达式匹配实现模仿Scala语言。</p>
+<h2 id="Cypher语句"><a href="#Cypher语句" class="headerlink" title="Cypher语句"></a>Cypher语句</h2><p>Cypher是图形数据库Neo4j的声明式查询语言。<br><em>Cypher语句规则和具备的能力:<br>Cypher通过模式匹配图数据库中的节点和关系，来提取信息或者修改数据。<br>Cypher语句中允许使用变量，用来表示命名、绑定元素和参数。<br>Cypher语句可以对节点、关系、标签和属性进行创建、更新和删除操作。<br>Cypher语句可以管理索引和约束</em></p>
+<h3 id="1、创建节点语句"><a href="#1、创建节点语句" class="headerlink" title="1、创建节点语句"></a>1、创建节点语句</h3><pre><code>create (a) 创建空节点
+create (a:Person) 创建标签（可以理解为类）为Person的节点
+create (a:Person {name:‘Kaine‘,age:28}) 创建标签为Person，属性name值为Kaine，属性age值为28的节点
+</code></pre><h3 id="2、创建关系语言"><a href="#2、创建关系语言" class="headerlink" title="2、创建关系语言"></a>2、创建关系语言</h3><pre><code>match (a),(b)
+where a.name=‘Kaine‘ and b.name=‘Sharon‘
+create (a)-[r]-&gt;(b) 创建a节点和b节点的路径，此时变量r即代表关联，它也可以有标签
+</code></pre><h3 id="3、查询关键字"><a href="#3、查询关键字" class="headerlink" title="3、查询关键字"></a>3、查询关键字</h3><pre><code>match：用来匹配一定模式，可以是简单的节点、关联，也可以是复杂的路径
+where：用来限定条件，一般是限定match中的出现变量的属性
+return：返回结果
 
+match ... where ... return ...
+如果match有多个对象，用逗号隔开；
+如果where有多个条件，用and连接；
+如果return有多个变量，用逗号隔开
+
+match (n) return n 查询所有节点及关联
+match (a)-[r]-&gt;(b) where a.name=‘Kaine‘ return a,b 查询属性name的值是Kaine的节点，及其所有关联节点
+match (a)-[*1..3]-&gt;(b) where a.name=‘Kaine‘ return a,b 查询属性name值是Kaine的节点，及其所有距离为1到3的关联节点。
+</code></pre><h3 id="4、匹配任意节点"><a href="#4、匹配任意节点" class="headerlink" title="4、匹配任意节点"></a>4、匹配任意节点</h3><pre><code># //该语句会匹配任意节点，并返回
+# MATCH (n) RETURN n
+</code></pre><h3 id="5、匹配任意关系"><a href="#5、匹配任意关系" class="headerlink" title="5、匹配任意关系"></a>5、匹配任意关系</h3><pre><code># //该语句是匹配出有任意关系的两个节点
+# MATCH p = (n)-[r]-&gt;(m) RETURN p
+</code></pre><h3 id="6、根据标签过滤"><a href="#6、根据标签过滤" class="headerlink" title="6、根据标签过滤"></a>6、根据标签过滤</h3><pre><code># //从图数据库中,过滤出Person标签
+# MATCH (n) WHERE n:Person RETURN n
+</code></pre><h3 id="7、根据节点属性过滤"><a href="#7、根据节点属性过滤" class="headerlink" title="7、根据节点属性过滤"></a>7、根据节点属性过滤</h3><pre><code># MATCH (n) WHERE n.name = &quot;李思思&quot; RETURN n
+</code></pre><h3 id="8、根据关系属性过滤"><a href="#8、根据关系属性过滤" class="headerlink" title="8、根据关系属性过滤"></a>8、根据关系属性过滤</h3><pre><code># MATCH (n)-[k:KNOWS]-&gt;(f) WHERE k.since &lt; 2000 RETURN f
+</code></pre><h3 id="9、删除neo4j中的所有节点和关系"><a href="#9、删除neo4j中的所有节点和关系" class="headerlink" title="9、删除neo4j中的所有节点和关系"></a>9、删除neo4j中的所有节点和关系</h3><pre><code># MATCH (n) DETACH DELETE n
+</code></pre><h3 id="10、删除节点"><a href="#10、删除节点" class="headerlink" title="10、删除节点"></a>10、删除节点</h3><pre><code># MATCH (n:City) DELETE n
+</code></pre><h3 id="11、删除关系"><a href="#11、删除关系" class="headerlink" title="11、删除关系"></a>11、删除关系</h3><pre><code># MATCH (n)-[r:created]-() DELETE r 
+</code></pre>
       
     </div>
     
@@ -445,8 +448,8 @@ tar -zxvf /tmp/neo4j-community-3.1.1-unix.tar.gz -C /home/neo4j/
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/12/22/图数据库Neo4j学习指南1/" rel="next" title="图数据库Neo4j学习指南1">
-                <i class="fa fa-chevron-left"></i> 图数据库Neo4j学习指南1
+              <a href="/2017/12/22/图数据库Neo4j学习指南2/" rel="next" title="图数据库Neo4j学习指南2">
+                <i class="fa fa-chevron-left"></i> 图数据库Neo4j学习指南2
               </a>
             
           </div>
@@ -454,10 +457,6 @@ tar -zxvf /tmp/neo4j-community-3.1.1-unix.tar.gz -C /home/neo4j/
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/12/24/untitled-1514079737600/" rel="prev" title="图数据库Neo4j学习指南3">
-                图数据库Neo4j学习指南3 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -636,7 +635,7 @@ tar -zxvf /tmp/neo4j-community-3.1.1-unix.tar.gz -C /home/neo4j/
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Neo4j安装"><span class="nav-number">1.</span> <span class="nav-text"><a href="#Neo4j&#x5B89;&#x88C5;" class="headerlink" title="Neo4j&#x5B89;&#x88C5;"></a>Neo4j&#x5B89;&#x88C5;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Neo4j配置"><span class="nav-number">2.</span> <span class="nav-text"><a href="#Neo4j&#x914D;&#x7F6E;" class="headerlink" title="Neo4j&#x914D;&#x7F6E;"></a>Neo4j&#x914D;&#x7F6E;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Neo4j基本数据类型"><span class="nav-number">3.</span> <span class="nav-text"><a href="#Neo4j&#x57FA;&#x672C;&#x6570;&#x636E;&#x7C7B;&#x578B;" class="headerlink" title="Neo4j&#x57FA;&#x672C;&#x6570;&#x636E;&#x7C7B;&#x578B;"></a>Neo4j&#x57FA;&#x672C;&#x6570;&#x636E;&#x7C7B;&#x578B;</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Cypher语言介绍"><span class="nav-number">1.</span> <span class="nav-text"><a href="#Cypher&#x8BED;&#x8A00;&#x4ECB;&#x7ECD;" class="headerlink" title="Cypher&#x8BED;&#x8A00;&#x4ECB;&#x7ECD;"></a>Cypher&#x8BED;&#x8A00;&#x4ECB;&#x7ECD;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Cypher语句"><span class="nav-number">2.</span> <span class="nav-text"><a href="#Cypher&#x8BED;&#x53E5;" class="headerlink" title="Cypher&#x8BED;&#x53E5;"></a>Cypher&#x8BED;&#x53E5;</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、创建节点语句"><span class="nav-number">2.1.</span> <span class="nav-text"><a href="#1&#x3001;&#x521B;&#x5EFA;&#x8282;&#x70B9;&#x8BED;&#x53E5;" class="headerlink" title="1&#x3001;&#x521B;&#x5EFA;&#x8282;&#x70B9;&#x8BED;&#x53E5;"></a>1&#x3001;&#x521B;&#x5EFA;&#x8282;&#x70B9;&#x8BED;&#x53E5;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、创建关系语言"><span class="nav-number">2.2.</span> <span class="nav-text"><a href="#2&#x3001;&#x521B;&#x5EFA;&#x5173;&#x7CFB;&#x8BED;&#x8A00;" class="headerlink" title="2&#x3001;&#x521B;&#x5EFA;&#x5173;&#x7CFB;&#x8BED;&#x8A00;"></a>2&#x3001;&#x521B;&#x5EFA;&#x5173;&#x7CFB;&#x8BED;&#x8A00;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3、查询关键字"><span class="nav-number">2.3.</span> <span class="nav-text"><a href="#3&#x3001;&#x67E5;&#x8BE2;&#x5173;&#x952E;&#x5B57;" class="headerlink" title="3&#x3001;&#x67E5;&#x8BE2;&#x5173;&#x952E;&#x5B57;"></a>3&#x3001;&#x67E5;&#x8BE2;&#x5173;&#x952E;&#x5B57;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4、匹配任意节点"><span class="nav-number">2.4.</span> <span class="nav-text"><a href="#4&#x3001;&#x5339;&#x914D;&#x4EFB;&#x610F;&#x8282;&#x70B9;" class="headerlink" title="4&#x3001;&#x5339;&#x914D;&#x4EFB;&#x610F;&#x8282;&#x70B9;"></a>4&#x3001;&#x5339;&#x914D;&#x4EFB;&#x610F;&#x8282;&#x70B9;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5、匹配任意关系"><span class="nav-number">2.5.</span> <span class="nav-text"><a href="#5&#x3001;&#x5339;&#x914D;&#x4EFB;&#x610F;&#x5173;&#x7CFB;" class="headerlink" title="5&#x3001;&#x5339;&#x914D;&#x4EFB;&#x610F;&#x5173;&#x7CFB;"></a>5&#x3001;&#x5339;&#x914D;&#x4EFB;&#x610F;&#x5173;&#x7CFB;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6、根据标签过滤"><span class="nav-number">2.6.</span> <span class="nav-text"><a href="#6&#x3001;&#x6839;&#x636E;&#x6807;&#x7B7E;&#x8FC7;&#x6EE4;" class="headerlink" title="6&#x3001;&#x6839;&#x636E;&#x6807;&#x7B7E;&#x8FC7;&#x6EE4;"></a>6&#x3001;&#x6839;&#x636E;&#x6807;&#x7B7E;&#x8FC7;&#x6EE4;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7、根据节点属性过滤"><span class="nav-number">2.7.</span> <span class="nav-text"><a href="#7&#x3001;&#x6839;&#x636E;&#x8282;&#x70B9;&#x5C5E;&#x6027;&#x8FC7;&#x6EE4;" class="headerlink" title="7&#x3001;&#x6839;&#x636E;&#x8282;&#x70B9;&#x5C5E;&#x6027;&#x8FC7;&#x6EE4;"></a>7&#x3001;&#x6839;&#x636E;&#x8282;&#x70B9;&#x5C5E;&#x6027;&#x8FC7;&#x6EE4;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8、根据关系属性过滤"><span class="nav-number">2.8.</span> <span class="nav-text"><a href="#8&#x3001;&#x6839;&#x636E;&#x5173;&#x7CFB;&#x5C5E;&#x6027;&#x8FC7;&#x6EE4;" class="headerlink" title="8&#x3001;&#x6839;&#x636E;&#x5173;&#x7CFB;&#x5C5E;&#x6027;&#x8FC7;&#x6EE4;"></a>8&#x3001;&#x6839;&#x636E;&#x5173;&#x7CFB;&#x5C5E;&#x6027;&#x8FC7;&#x6EE4;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9、删除neo4j中的所有节点和关系"><span class="nav-number">2.9.</span> <span class="nav-text"><a href="#9&#x3001;&#x5220;&#x9664;neo4j&#x4E2D;&#x7684;&#x6240;&#x6709;&#x8282;&#x70B9;&#x548C;&#x5173;&#x7CFB;" class="headerlink" title="9&#x3001;&#x5220;&#x9664;neo4j&#x4E2D;&#x7684;&#x6240;&#x6709;&#x8282;&#x70B9;&#x548C;&#x5173;&#x7CFB;"></a>9&#x3001;&#x5220;&#x9664;neo4j&#x4E2D;&#x7684;&#x6240;&#x6709;&#x8282;&#x70B9;&#x548C;&#x5173;&#x7CFB;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#10、删除节点"><span class="nav-number">2.10.</span> <span class="nav-text"><a href="#10&#x3001;&#x5220;&#x9664;&#x8282;&#x70B9;" class="headerlink" title="10&#x3001;&#x5220;&#x9664;&#x8282;&#x70B9;"></a>10&#x3001;&#x5220;&#x9664;&#x8282;&#x70B9;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#11、删除关系"><span class="nav-number">2.11.</span> <span class="nav-text"><a href="#11&#x3001;&#x5220;&#x9664;&#x5173;&#x7CFB;" class="headerlink" title="11&#x3001;&#x5220;&#x9664;&#x5173;&#x7CFB;"></a>11&#x3001;&#x5220;&#x9664;&#x5173;&#x7CFB;</span></a></li></ol></li></ol></div>
             
 
           </div>
