@@ -78,7 +78,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, Albert, NLP, ML" />
+  <meta name="keywords" content="nginx,Neo4j," />
 
 
 
@@ -96,16 +96,18 @@
 
 
 
-<meta name="description" content="Stay Hungry, Stay Foolish">
-<meta property="og:type" content="website">
-<meta property="og:title" content="学无止境">
-<meta property="og:url" content="http://linanblog.cn/archives/index.html">
+<meta name="description" content="前段时间做知识库相关项目，用到了Neo4j图形数据库，由于公司的服务器都是通过堡垒机跳转的，因此本地机想连接服务器中的Neo4j，需要通过ngnix转发服务。原本认为是件很容易的事情，但是在配置nginx的时候遇到了问题，因为我们是需要neo4j的web来显示数据的，所以在nginx的配置文件中，给Neo4j的7474端口进行了转发，但连接Neo4j的数据库需要blot协议，我不知道怎么在ngin">
+<meta name="keywords" content="nginx,Neo4j">
+<meta property="og:type" content="article">
+<meta property="og:title" content="nginx实现Neo4j的转发服务">
+<meta property="og:url" content="http://linanblog.cn/2018/01/03/nginx实现Neo4j的转发服务/index.html">
 <meta property="og:site_name" content="学无止境">
-<meta property="og:description" content="Stay Hungry, Stay Foolish">
+<meta property="og:description" content="前段时间做知识库相关项目，用到了Neo4j图形数据库，由于公司的服务器都是通过堡垒机跳转的，因此本地机想连接服务器中的Neo4j，需要通过ngnix转发服务。原本认为是件很容易的事情，但是在配置nginx的时候遇到了问题，因为我们是需要neo4j的web来显示数据的，所以在nginx的配置文件中，给Neo4j的7474端口进行了转发，但连接Neo4j的数据库需要blot协议，我不知道怎么在ngin">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-01-03T03:37:21.586Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="学无止境">
-<meta name="twitter:description" content="Stay Hungry, Stay Foolish">
+<meta name="twitter:title" content="nginx实现Neo4j的转发服务">
+<meta name="twitter:description" content="前段时间做知识库相关项目，用到了Neo4j图形数据库，由于公司的服务器都是通过堡垒机跳转的，因此本地机想连接服务器中的Neo4j，需要通过ngnix转发服务。原本认为是件很容易的事情，但是在配置nginx的时候遇到了问题，因为我们是需要neo4j的web来显示数据的，所以在nginx的配置文件中，给Neo4j的7474端口进行了转发，但连接Neo4j的数据库需要blot协议，我不知道怎么在ngin">
 
 
 
@@ -134,13 +136,13 @@
 
 
 
-  <link rel="canonical" href="http://linanblog.cn/archives/"/>
+  <link rel="canonical" href="http://linanblog.cn/2018/01/03/nginx实现Neo4j的转发服务/"/>
 
 
 
 
 
-  <title>归档 | 学无止境</title>
+  <title>nginx实现Neo4j的转发服务 | 学无止境</title>
   
 
 
@@ -165,7 +167,7 @@
     
   
 
-  <div class="container sidebar-position-left  page-archive  ">
+  <div class="container sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -279,264 +281,191 @@
           <div id="content" class="content">
             
 
+  <div id="posts" class="posts-expand">
+    
+
+  
+
   
   
   
-  <div class="post-block archive">
-    <div id="posts" class="posts-collapse">
-      <span class="archive-move-on"></span>
 
-      <span class="archive-page-counter">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://linanblog.cn/2018/01/03/nginx实现Neo4j的转发服务/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Albert">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/WechatIMG7.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="学无止境">
+    </span>
+
+    
+      <header class="post-header">
+
         
         
+          <h1 class="post-title" itemprop="name headline">nginx实现Neo4j的转发服务</h1>
         
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-03T11:37:21+08:00">
+                2018-01-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
           
-        
-        嗯..! 目前共计 6 篇日志。 继续努力。
-      </span>
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/知识图谱/" itemprop="url" rel="index">
+                    <span itemprop="name">知识图谱</span>
+                  </a>
+                </span>
 
-      
-
-        
-        
-        
-
-        
+                
+                
+              
+            </span>
           
-          <div class="collection-title">
-            <h2 class="archive-year motion-element" id="archive-year-2018">2018</h2>
-          </div>
-        
-        
 
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/01/03/nginx实现Neo4j的转发服务/" itemprop="url">
-              
-                <span itemprop="name">nginx实现Neo4j的转发服务</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-01-03T11:37:21+08:00"
-              content="2018-01-03" >
-          01-03
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/01/02/Nginx实现TCP反向代理/" itemprop="url">
-              
-                <span itemprop="name">Nginx实现TCP反向代理</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-01-02T14:51:36+08:00"
-              content="2018-01-02" >
-          01-02
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
           
-          <div class="collection-title">
-            <h2 class="archive-year motion-element" id="archive-year-2017">2017</h2>
-          </div>
-        
-        
+            
+          
 
-        
+          
+          
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+          
 
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2017/12/25/图数据库Neo4j学习指南4/" itemprop="url">
-              
-                <span itemprop="name">图数据库Neo4j学习指南4</span>
-              
-            </a>
-        
-      </h2>
+          
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-12-25T10:16:26+08:00"
-              content="2017-12-25" >
-          12-25
-        </time>
-      </div>
+          
 
-    </header>
-  </article>
+        </div>
+      </header>
+    
 
-
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2017/12/24/untitled-1514079737600/" itemprop="url">
-              
-                <span itemprop="name">图数据库Neo4j学习指南3</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-12-24T09:42:17+08:00"
-              content="2017-12-24" >
-          12-24
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
       
 
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2017/12/22/图数据库Neo4j学习指南2/" itemprop="url">
-              
-                <span itemprop="name">图数据库Neo4j学习指南2</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-12-22T18:23:18+08:00"
-              content="2017-12-22" >
-          12-22
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
       
+        <p>前段时间做知识库相关项目，用到了Neo4j图形数据库，由于公司的服务器都是通过堡垒机跳转的，因此本地机想连接服务器中的Neo4j，需要通过ngnix转发服务。原本认为是件很容易的事情，但是在配置nginx的时候遇到了问题，因为我们是需要neo4j的web来显示数据的，所以在nginx的配置文件中，给Neo4j的7474端口进行了转发，但连接Neo4j的数据库需要blot协议，我不知道怎么在nginx中配置，期间上谷歌查了多少资料，也没有详细说明，后来咨询了Neo4j中文社区的群主，给了一个链接，<a href="https://stackoverflow.com/questions/45990168/neo4j-with-a-reverse-proxy-and-nginx" target="_blank" rel="noopener">https://stackoverflow.com/questions/45990168/neo4j-with-a-reverse-proxy-and-nginx</a> 上面有介绍如何配置，我安装上面的说明，又对ngnix进行了配置，但是还是不行，无奈，只好请教公司的运维，公司的运维弄了弄， 也没有配置好，后来运维找了一个公司的nginx的大神，大神就是大神，分分钟解决问题。<br>下面是nginx实现Neo4j的转发服务的详细配置：<br><strong><em>需要nginx支持tcp服务</em></strong></p>
+<pre><code>## 配置7687端口
+stream {
+         upstream aaa {
+         server 10.22.240.120:7687;
+         }
+         server {
+         listen 8080;
+         proxy_pass aaa;
+         }
+ }
 
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2017/12/22/图数据库Neo4j学习指南1/" itemprop="url">
-              
-                <span itemprop="name">图数据库Neo4j学习指南1</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-12-22T13:49:52+08:00"
-              content="2017-12-22" >
-          12-22
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
+## 配置7474端口
+location /neo4j/ {
+   proxy_set_header X-Real-IP $remote_addr;
+   proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+   proxy_set_header Host $http_host;
+   proxy_redirect off;
+   proxy_buffering off;
+   proxy_pass http://10.22.240.120:7474/browser/;
+ }
+</code></pre>
       
-
     </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/nginx/" rel="tag"># nginx</a>
+          
+            <a href="/tags/Neo4j/" rel="tag"># Neo4j</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/01/02/Nginx实现TCP反向代理/" rel="next" title="Nginx实现TCP反向代理">
+                <i class="fa fa-chevron-left"></i> Nginx实现TCP反向代理
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -544,6 +473,10 @@
 
 
           
+  <div class="comments" id="comments">
+    
+  </div>
+
 
         </div>
         
@@ -792,11 +725,9 @@
 
 
   
-  
-    <script type="text/javascript" id="motion.page.archive">
-      $('.archive-year').velocity('transition.slideLeftIn');
-    </script>
-  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
 
 
   
