@@ -78,7 +78,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Neo4j," />
+  <meta name="keywords" content="Pandas," />
 
 
 
@@ -96,18 +96,18 @@
 
 
 
-<meta name="description" content="Neo4j删除和备份数据库数据Neo4j删除整个数据库1、停掉数据库。2、删除D:\Neo4J\neo4j-enterprise-1.9.1\data目录下graph.db的目录。 备份Neo4j的数据1、停掉数据库。2、备份D:\Neo4J\neo4j-enterprise-1.9.1\data目录下graph.db目录中的所有内容。3、在服务器上拷贝graph.db目录中的内容到新的服务器的相">
-<meta name="keywords" content="Neo4j">
+<meta name="description" content="继上一篇文章简要介绍了Pandas的Series和DataFrame结构之后，这块文章重点介绍一下Pandas的核心DataFrame结构的常用操作。 DataFrame的删除操作：12345678910111213141516171819202122232425&amp;gt;&amp;gt;&amp;gt; data = DataFrame(np.arange(16).reshape((4, 4)),...">
+<meta name="keywords" content="Pandas">
 <meta property="og:type" content="article">
-<meta property="og:title" content="图数据库Neo4j学习指南4">
-<meta property="og:url" content="http://linanblog.cn/2017/12/25/图数据库Neo4j学习指南4/index.html">
+<meta property="og:title" content="Pandas手记（2）">
+<meta property="og:url" content="http://linanblog.cn/2018/02/06/Pandas手记（2）/index.html">
 <meta property="og:site_name" content="学无止境">
-<meta property="og:description" content="Neo4j删除和备份数据库数据Neo4j删除整个数据库1、停掉数据库。2、删除D:\Neo4J\neo4j-enterprise-1.9.1\data目录下graph.db的目录。 备份Neo4j的数据1、停掉数据库。2、备份D:\Neo4J\neo4j-enterprise-1.9.1\data目录下graph.db目录中的所有内容。3、在服务器上拷贝graph.db目录中的内容到新的服务器的相">
+<meta property="og:description" content="继上一篇文章简要介绍了Pandas的Series和DataFrame结构之后，这块文章重点介绍一下Pandas的核心DataFrame结构的常用操作。 DataFrame的删除操作：12345678910111213141516171819202122232425&amp;gt;&amp;gt;&amp;gt; data = DataFrame(np.arange(16).reshape((4, 4)),...">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-12-25T02:25:04.069Z">
+<meta property="og:updated_time" content="2018-03-07T18:02:53.066Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="图数据库Neo4j学习指南4">
-<meta name="twitter:description" content="Neo4j删除和备份数据库数据Neo4j删除整个数据库1、停掉数据库。2、删除D:\Neo4J\neo4j-enterprise-1.9.1\data目录下graph.db的目录。 备份Neo4j的数据1、停掉数据库。2、备份D:\Neo4J\neo4j-enterprise-1.9.1\data目录下graph.db目录中的所有内容。3、在服务器上拷贝graph.db目录中的内容到新的服务器的相">
+<meta name="twitter:title" content="Pandas手记（2）">
+<meta name="twitter:description" content="继上一篇文章简要介绍了Pandas的Series和DataFrame结构之后，这块文章重点介绍一下Pandas的核心DataFrame结构的常用操作。 DataFrame的删除操作：12345678910111213141516171819202122232425&amp;gt;&amp;gt;&amp;gt; data = DataFrame(np.arange(16).reshape((4, 4)),...">
 
 
 
@@ -136,13 +136,13 @@
 
 
 
-  <link rel="canonical" href="http://linanblog.cn/2017/12/25/图数据库Neo4j学习指南4/"/>
+  <link rel="canonical" href="http://linanblog.cn/2018/02/06/Pandas手记（2）/"/>
 
 
 
 
 
-  <title>图数据库Neo4j学习指南4 | 学无止境</title>
+  <title>Pandas手记（2） | 学无止境</title>
   
 
 
@@ -295,7 +295,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://linanblog.cn/2017/12/25/图数据库Neo4j学习指南4/">
+    <link itemprop="mainEntityOfPage" href="http://linanblog.cn/2018/02/06/Pandas手记（2）/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Albert">
@@ -312,7 +312,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">图数据库Neo4j学习指南4</h1>
+          <h1 class="post-title" itemprop="name headline">Pandas手记（2）</h1>
         
 
         <div class="post-meta">
@@ -324,8 +324,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-25T10:16:26+08:00">
-                2017-12-25
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-06T10:39:35+08:00">
+                2018-02-06
               </time>
             
 
@@ -347,8 +347,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/知识图谱/" itemprop="url" rel="index">
-                    <span itemprop="name">知识图谱</span>
+                  <a href="/categories/常用机器学习库/" itemprop="url" rel="index">
+                    <span itemprop="name">常用机器学习库</span>
                   </a>
                 </span>
 
@@ -384,8 +384,9 @@
       
 
       
-        <h2 id="Neo4j删除和备份数据库数据"><a href="#Neo4j删除和备份数据库数据" class="headerlink" title="Neo4j删除和备份数据库数据"></a>Neo4j删除和备份数据库数据</h2><h3 id="Neo4j删除整个数据库"><a href="#Neo4j删除整个数据库" class="headerlink" title="Neo4j删除整个数据库"></a>Neo4j删除整个数据库</h3><p>1、停掉数据库。<br>2、删除D:\Neo4J\neo4j-enterprise-1.9.1\data目录下graph.db的目录。</p>
-<h3 id="备份Neo4j的数据"><a href="#备份Neo4j的数据" class="headerlink" title="备份Neo4j的数据"></a>备份Neo4j的数据</h3><p>1、停掉数据库。<br>2、备份D:\Neo4J\neo4j-enterprise-1.9.1\data目录下graph.db目录中的所有内容。<br>3、在服务器上拷贝graph.db目录中的内容到新的服务器的相同目录中,启动即可。</p>
+        <p>继上一篇文章简要介绍了Pandas的Series和DataFrame结构之后，这块文章重点介绍一下Pandas的核心DataFrame结构的常用操作。</p>
+<p>DataFrame的删除操作：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; data = DataFrame(np.arange(16).reshape((4, 4)),</span><br><span class="line">...                  index=[&apos;Ohio&apos;, &apos;Colorado&apos;, &apos;Utah&apos;, &apos;New York&apos;],</span><br><span class="line">...                  columns=[&apos;one&apos;, &apos;two&apos;, &apos;three&apos;, &apos;four&apos;])</span><br><span class="line">&gt;&gt;&gt; data</span><br><span class="line">          one  two  three  four</span><br><span class="line">Ohio        0    1      2     3</span><br><span class="line">Colorado    4    5      6     7</span><br><span class="line">Utah        8    9     10    11</span><br><span class="line">New York   12   13     14    15</span><br><span class="line">&gt;&gt;&gt; print(data.drop([&apos;Colorado&apos;, &apos;Ohio&apos;]))</span><br><span class="line">          one  two  three  four</span><br><span class="line">Utah        8    9     10    11</span><br><span class="line">New York   12   13     14    15</span><br><span class="line">&gt;&gt;&gt; print(data.drop(&apos;two&apos;, axis=1))</span><br><span class="line">          one  three  four</span><br><span class="line">Ohio        0      2     3</span><br><span class="line">Colorado    4      6     7</span><br><span class="line">Utah        8     10    11</span><br><span class="line">New York   12     14    15</span><br><span class="line">&gt;&gt;&gt; print(data.drop([&apos;two&apos;, &apos;four&apos;], axis=1))</span><br><span class="line">          one  three</span><br><span class="line">Ohio        0      2</span><br><span class="line">Colorado    4      6</span><br><span class="line">Utah        8     10</span><br><span class="line">New York   12     14</span><br></pre></td></tr></table></figure></p>
+<p><strong><em> 数据过滤 </em></strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; print data[data.three &lt; 10]  # three列上值大于等于10的行扔掉，小于的保留。</span><br><span class="line">          one  two  three  four</span><br><span class="line">Ohio        0    1      2     3</span><br><span class="line">Colorado    4    5      6     7</span><br><span class="line">&gt;&gt;&gt; data</span><br><span class="line">          one  two  three  four</span><br><span class="line">Ohio        0    1      2     3</span><br><span class="line">Colorado    4    5      6     7</span><br><span class="line">Utah        8    9     10    11</span><br><span class="line">New York   12   13     14    15</span><br><span class="line">&gt;&gt;&gt; print data.loc[data.three &lt; 5, ]</span><br><span class="line">      one  two  three  four</span><br><span class="line">Ohio    0    1      2     3</span><br><span class="line">&gt;&gt;&gt; data[data &gt; 10] = 0</span><br><span class="line">&gt;&gt;&gt; data</span><br><span class="line">          one  two  three  four</span><br><span class="line">Ohio        0    1      2     3</span><br><span class="line">Colorado    4    5      6     7</span><br><span class="line">Utah        8    9     10     0</span><br><span class="line">New York    0    0      0     0</span><br><span class="line">&gt;&gt;&gt; data + 100</span><br><span class="line">          one  two  three  four</span><br><span class="line">Ohio      100  101    102   103</span><br><span class="line">Colorado  104  105    106   107</span><br><span class="line">Utah      108  109    110   100</span><br><span class="line">New York  100  100    100   100</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; # DataFrame和Series的计算</span><br><span class="line">... frame = DataFrame(np.arange(12.).reshape((4, 3)),</span><br><span class="line">...                   columns=list(&apos;bde&apos;),</span><br><span class="line">...                   index=[&apos;Utah&apos;, &apos;Ohio&apos;, &apos;Texas&apos;, &apos;Oregon&apos;])</span><br><span class="line">&gt;&gt;&gt; s = frame.iloc[0]</span><br><span class="line">&gt;&gt;&gt; print(frame)</span><br><span class="line">          b     d     e</span><br><span class="line">Utah    0.0   1.0   2.0</span><br><span class="line">Ohio    3.0   4.0   5.0</span><br><span class="line">Texas   6.0   7.0   8.0</span><br><span class="line">Oregon  9.0  10.0  11.0</span><br><span class="line">&gt;&gt;&gt; print(s)</span><br><span class="line">b    0.0</span><br><span class="line">d    1.0</span><br><span class="line">e    2.0</span><br><span class="line">Name: Utah, dtype: float64</span><br><span class="line">&gt;&gt;&gt; print(frame - s) # 每一行减去对应的s，本质上每一行在对应的索引位置上相减。</span><br><span class="line">          b    d    e</span><br><span class="line">Utah    0.0  0.0  0.0</span><br><span class="line">Ohio    3.0  3.0  3.0</span><br><span class="line">Texas   6.0  6.0  6.0</span><br><span class="line">Oregon  9.0  9.0  9.0</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -403,7 +404,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Neo4j/" rel="tag"># Neo4j</a>
+            <a href="/tags/Pandas/" rel="tag"># Pandas</a>
           
         </div>
       
@@ -416,8 +417,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/12/24/untitled-1514079737600/" rel="next" title="图数据库Neo4j学习指南3">
-                <i class="fa fa-chevron-left"></i> 图数据库Neo4j学习指南3
+              <a href="/2018/02/05/Pandas手记（1）/" rel="next" title="Pandas手记（1）">
+                <i class="fa fa-chevron-left"></i> Pandas手记（1）
               </a>
             
           </div>
@@ -425,10 +426,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/01/02/Nginx实现TCP反向代理/" rel="prev" title="Nginx实现TCP反向代理">
-                Nginx实现TCP反向代理 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -480,17 +477,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview sidebar-panel">
+      <section class="site-overview sidebar-panel sidebar-panel-active">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/WechatIMG7.jpeg"
@@ -597,22 +585,6 @@
 
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Neo4j删除和备份数据库数据"><span class="nav-number">1.</span> <span class="nav-text"><a href="#Neo4j&#x5220;&#x9664;&#x548C;&#x5907;&#x4EFD;&#x6570;&#x636E;&#x5E93;&#x6570;&#x636E;" class="headerlink" title="Neo4j&#x5220;&#x9664;&#x548C;&#x5907;&#x4EFD;&#x6570;&#x636E;&#x5E93;&#x6570;&#x636E;"></a>Neo4j&#x5220;&#x9664;&#x548C;&#x5907;&#x4EFD;&#x6570;&#x636E;&#x5E93;&#x6570;&#x636E;</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Neo4j删除整个数据库"><span class="nav-number">1.1.</span> <span class="nav-text"><a href="#Neo4j&#x5220;&#x9664;&#x6574;&#x4E2A;&#x6570;&#x636E;&#x5E93;" class="headerlink" title="Neo4j&#x5220;&#x9664;&#x6574;&#x4E2A;&#x6570;&#x636E;&#x5E93;"></a>Neo4j&#x5220;&#x9664;&#x6574;&#x4E2A;&#x6570;&#x636E;&#x5E93;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#备份Neo4j的数据"><span class="nav-number">1.2.</span> <span class="nav-text"><a href="#&#x5907;&#x4EFD;Neo4j&#x7684;&#x6570;&#x636E;" class="headerlink" title="&#x5907;&#x4EFD;Neo4j&#x7684;&#x6570;&#x636E;"></a>&#x5907;&#x4EFD;Neo4j&#x7684;&#x6570;&#x636E;</span></a></li></ol></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
