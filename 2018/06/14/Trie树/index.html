@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Trie树,字典树," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="学无止境" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="一、知识简介 Trie树，又称单词查找树或键树，是一种树形结构，是一种哈希树的变种。典型应用是用于统计和排序大量的字符串（但不仅限于字符串），所以经常被搜索引擎系统用于文本词频统计。它的优点是：最大限度地减少无谓的字符串比较，查询效率比哈希表高。 Trie树优点：Trie 的强大之处就在于它的时间复杂度。它的插入和查询时间复杂度都为 O(k) ，其中 k 为 key 的长度，与 Trie 中保存了">
+<meta name="keywords" content="Trie树,字典树">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Trie树">
+<meta property="og:url" content="http://linanblog.cn/2018/06/14/Trie树/index.html">
+<meta property="og:site_name" content="学无止境">
+<meta property="og:description" content="一、知识简介 Trie树，又称单词查找树或键树，是一种树形结构，是一种哈希树的变种。典型应用是用于统计和排序大量的字符串（但不仅限于字符串），所以经常被搜索引擎系统用于文本词频统计。它的优点是：最大限度地减少无谓的字符串比较，查询效率比哈希表高。 Trie树优点：Trie 的强大之处就在于它的时间复杂度。它的插入和查询时间复杂度都为 O(k) ，其中 k 为 key 的长度，与 Trie 中保存了">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-06-14T07:15:38.896Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Trie树">
+<meta name="twitter:description" content="一、知识简介 Trie树，又称单词查找树或键树，是一种树形结构，是一种哈希树的变种。典型应用是用于统计和排序大量的字符串（但不仅限于字符串），所以经常被搜索引擎系统用于文本词频统计。它的优点是：最大限度地减少无谓的字符串比较，查询效率比哈希表高。 Trie树优点：Trie 的强大之处就在于它的时间复杂度。它的插入和查询时间复杂度都为 O(k) ，其中 k 为 key 的长度，与 Trie 中保存了">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://linanblog.cn/2018/06/14/Trie树/"/>
+
+
+
+
+
+  <title>Trie树 | 学无止境</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">学无止境</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">黑发不知勤学早，白首方悔读书迟。</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://linanblog.cn/2018/06/14/Trie树/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Albert">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/WechatIMG7.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="学无止境">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Trie树</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-14T15:15:38+08:00">
+                2018-06-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/常用算法/" itemprop="url" rel="index">
+                    <span itemprop="name">常用算法</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h4 id="一、知识简介"><a href="#一、知识简介" class="headerlink" title="一、知识简介"></a>一、知识简介</h4><p> Trie树，又称单词查找树或键树，是一种树形结构，是一种哈希树的变种。典型应用是用于统计和排序大量的字符串（但不仅限于字符串），所以经常被搜索引擎系统用于文本词频统计。它的优点是：最大限度地减少无谓的字符串比较，查询效率比哈希表高。</p>
+<h5 id="Trie树优点："><a href="#Trie树优点：" class="headerlink" title="Trie树优点："></a>Trie树优点：</h5><p>Trie 的强大之处就在于它的时间复杂度。<font color="red">它的插入和查询时间复杂度都为 O(k)</font> ，其中 k 为 key 的长度，与 Trie 中保存了多少个元素无关。Hash 表号称是 O(1) 的，但在计算 hash 的时候就肯定会是 O(k) ，而且还有碰撞之类的问题。</p>
+<h5 id="Trie树缺点："><a href="#Trie树缺点：" class="headerlink" title="Trie树缺点："></a>Trie树缺点：</h5><p>Trie 的缺点是空间消耗很高。</p>
+<p><font color="blue">Trie的核心思想是空间换时间。利用字符串的公共前缀来降低查询时间的开销以达到提高效率的目的。</font></p>
+<h5 id="Trie树有一些特性："><a href="#Trie树有一些特性：" class="headerlink" title="Trie树有一些特性："></a>Trie树有一些特性：</h5><p>1）根节点不包含字符，除根节点外每一个节点都只包含一个字符。<br>2）从根节点到某一节点，路径上经过的字符连接起来，为该节点对应的字符串。<br>3）每个节点的所有子节点包含的字符都不相同。<br>4）如果字符的种数为n，则每个结点的出度为n，这也是空间换时间的体现，浪费了很多的空间。<br>5）插入查找的复杂度为O(n)，n为字符串长度。</p>
+<h5 id="基本思想（以字母树为例）："><a href="#基本思想（以字母树为例）：" class="headerlink" title="基本思想（以字母树为例）："></a>基本思想（以字母树为例）：</h5><p>1、插入过程<br>对于一个单词，从根开始，沿着单词的各个字母所对应的树中的节点分支向下走，直到单词遍历完，将最后的节点标记为红色，表示该单词已插入Trie树。<br>2、查询过程<br>同样的，从根开始按照单词的字母顺序向下遍历trie树，一旦发现某个节点标记不存在或者单词遍历完成而最后的节点未标记为红色，则表示该单词不存在，若最后的节点标记为红色，表示该单词存在。</p>
+<h5 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h5><p>词频统计<br>比直接用hash节省空间<br>搜索提示<br>输入前缀的时候提示可以构成的词<br>作为辅助结构<br>如后缀树，AC自动机等的辅助结构<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br></pre></td><td class="code"><pre><span class="line">coding:utf-8</span><br><span class="line">&quot;&quot;&quot;</span><br><span class="line">Implement a trie with insert, search, and startsWith methods.</span><br><span class="line"></span><br><span class="line">Note:</span><br><span class="line">You may assume that all inputs are consist of lowercase letters a-z.</span><br><span class="line"></span><br><span class="line">Subscribe to see which companies asked this question</span><br><span class="line">&quot;&quot;&quot;</span><br><span class="line">class TrieNode(object):</span><br><span class="line">    def __init__(self):</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        Initialize your data structure here.</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        self.data = &#123;&#125;</span><br><span class="line">        self.is_word = False</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">class Trie(object):</span><br><span class="line">    def __init__(self):</span><br><span class="line">        self.root = TrieNode()</span><br><span class="line"></span><br><span class="line">    def insert(self, word):</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        Inserts a word into the trie.</span><br><span class="line">        :type word: str</span><br><span class="line">        :rtype: void</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        node = self.root</span><br><span class="line">        for letter in word:</span><br><span class="line">            child = node.data.get(letter)</span><br><span class="line">            if not child:</span><br><span class="line">                node.data[letter] = TrieNode()</span><br><span class="line">            node = node.data[letter]</span><br><span class="line">        node.is_word = True</span><br><span class="line"></span><br><span class="line">    def search(self, word):</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        Returns if the word is in the trie.</span><br><span class="line">        :type word: str</span><br><span class="line">        :rtype: bool</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        node = self.root</span><br><span class="line">        for letter in word:</span><br><span class="line">            node = node.data.get(letter)</span><br><span class="line">            if not node:</span><br><span class="line">                return False</span><br><span class="line">        return node.is_word  # 判断单词是否是完整的存在在trie树中</span><br><span class="line"></span><br><span class="line">    def starts_with(self, prefix):</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        Returns if there is any word in the trie</span><br><span class="line">        that starts with the given prefix.</span><br><span class="line">        :type prefix: str</span><br><span class="line">        :rtype: bool</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        node = self.root</span><br><span class="line">        for letter in prefix:</span><br><span class="line">            node = node.data.get(letter)</span><br><span class="line">            if not node:</span><br><span class="line">                return False</span><br><span class="line">        return True</span><br><span class="line"></span><br><span class="line">    def get_start(self, prefix):</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        Returns words started with prefix</span><br><span class="line">        :param prefix:</span><br><span class="line">        :return: words (list)</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        def _get_key(pre, pre_node):</span><br><span class="line">            words_list = []</span><br><span class="line">            if pre_node.is_word:</span><br><span class="line">                words_list.append(pre)</span><br><span class="line">            for x in pre_node.data.keys():</span><br><span class="line">                words_list.extend(_get_key(pre + str(x), pre_node.data.get(x)))</span><br><span class="line">            return words_list</span><br><span class="line"></span><br><span class="line">        words = []</span><br><span class="line">        if not self.starts_with(prefix):</span><br><span class="line">            return words</span><br><span class="line">        if self.search(prefix):</span><br><span class="line">            words.append(prefix)</span><br><span class="line">            return words</span><br><span class="line">        node = self.root</span><br><span class="line">        for letter in prefix:</span><br><span class="line">            node = node.data.get(letter)</span><br><span class="line">        return _get_key(prefix, node)</span><br><span class="line">        </span><br><span class="line"># Your Trie object will be instantiated and called as such:</span><br><span class="line">trie = Trie()</span><br><span class="line">trie.insert(&quot;somestring&quot;)</span><br><span class="line">trie.insert(&quot;somebody&quot;)</span><br><span class="line">trie.insert(&quot;somebody1&quot;)</span><br><span class="line">trie.insert(&quot;somebody3&quot;)</span><br><span class="line">print trie.search(&quot;key&quot;)</span><br><span class="line">print trie.search(&quot;somebody3&quot;)</span><br><span class="line">print trie.get_start(&apos;some&apos;)</span><br></pre></td></tr></table></figure></p>
+<h5 id="海量数据情况下，trie树的应用"><a href="#海量数据情况下，trie树的应用" class="headerlink" title="海量数据情况下，trie树的应用"></a>海量数据情况下，trie树的应用</h5><p>适用范围：数据量大，重复多，但是数据种类小可以放入内存<br>基本原理及要点：实现方式，节点孩子的表示方式<br> 1、一个文本文件，大约有一万行，每行一个词，要求统计出其中最频繁出现的前10个词，请给出思想，给出时间复杂度分析.<br>答：先用trie树统计每个词出现的次数，时间复杂度是O(n<em>le)（le表示单词的平均长度）;<br>然后是用小顶堆找出出现最频繁的前10个词，时间复杂度是O(n</em>lg10)。</p>
+<p>2、寻找热门查询<br>原题：搜索引擎会通过日志文件把用户每次检索使用的所有检索串都记录下来，每个查询串的长度为1-255字节。假设目前有一千万个记录，这些查询串的重复读比较高，虽然总数是1千万，但是如果去除重复和，不超过3百万个。一个查询串的重复度越高，说明查询它的用户越多，也就越热门。请你统计最热门的10个查询串，要求使用的内存不能超过1G。<br>答：利用trie树，关键字域存该查询串出现的次数，没有出现为0。最后用10个元素的最小推来对出现频率进行排序。</p>
+<p>3.1000万字符串，其中有些是相同的(重复),需要把重复的全部去掉，保留没有重复的字符串。<br>答：使用hash_map或者trie树。<br>  比如trie树，在构建trie树的过程中，如果某个字符串已经存在于trie中则不输出，否则输出到文本中，这样就可以得到不重复的字符串。<br>hash_map的速度会要快一些，因为在添加一个字符串的时候，hashmap直接用哈希函数就能定位，然后选择是否写入文件，但是trie树需要在子节点中比较。<br>trie树对hashmap的优势是，在大量重复的单词中，trie树需要的内存会低一些</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Trie树/" rel="tag"># Trie树</a>
+          
+            <a href="/tags/字典树/" rel="tag"># 字典树</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/02/06/Pandas手记（2）/" rel="next" title="Pandas手记（2）">
+                <i class="fa fa-chevron-left"></i> Pandas手记（2）
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/WechatIMG7.jpeg"
+               alt="Albert" />
+          <p class="site-author-name" itemprop="name">Albert</p>
+           
+              <p class="site-description motion-element" itemprop="description">Stay Hungry, Stay Foolish</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/AlbertStudy" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                    
+                      GitHub
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="mailto:linan_vip@126.com" target="_blank" title="E-Mail">
+                  
+                    <i class="fa fa-fw fa-envelope"></i>
+                  
+                    
+                      E-Mail
+                    
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              友情链接
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://imooc.com/" title="慕课网" target="_blank">慕课网</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#一、知识简介"><span class="nav-number">1.</span> <span class="nav-text"><a href="#&#x4E00;&#x3001;&#x77E5;&#x8BC6;&#x7B80;&#x4ECB;" class="headerlink" title="&#x4E00;&#x3001;&#x77E5;&#x8BC6;&#x7B80;&#x4ECB;"></a>&#x4E00;&#x3001;&#x77E5;&#x8BC6;&#x7B80;&#x4ECB;</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Trie树优点："><span class="nav-number">1.1.</span> <span class="nav-text"><a href="#Trie&#x6811;&#x4F18;&#x70B9;&#xFF1A;" class="headerlink" title="Trie&#x6811;&#x4F18;&#x70B9;&#xFF1A;"></a>Trie&#x6811;&#x4F18;&#x70B9;&#xFF1A;</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Trie树缺点："><span class="nav-number">1.2.</span> <span class="nav-text"><a href="#Trie&#x6811;&#x7F3A;&#x70B9;&#xFF1A;" class="headerlink" title="Trie&#x6811;&#x7F3A;&#x70B9;&#xFF1A;"></a>Trie&#x6811;&#x7F3A;&#x70B9;&#xFF1A;</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Trie树有一些特性："><span class="nav-number">1.3.</span> <span class="nav-text"><a href="#Trie&#x6811;&#x6709;&#x4E00;&#x4E9B;&#x7279;&#x6027;&#xFF1A;" class="headerlink" title="Trie&#x6811;&#x6709;&#x4E00;&#x4E9B;&#x7279;&#x6027;&#xFF1A;"></a>Trie&#x6811;&#x6709;&#x4E00;&#x4E9B;&#x7279;&#x6027;&#xFF1A;</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#基本思想（以字母树为例）："><span class="nav-number">1.4.</span> <span class="nav-text"><a href="#&#x57FA;&#x672C;&#x601D;&#x60F3;&#xFF08;&#x4EE5;&#x5B57;&#x6BCD;&#x6811;&#x4E3A;&#x4F8B;&#xFF09;&#xFF1A;" class="headerlink" title="&#x57FA;&#x672C;&#x601D;&#x60F3;&#xFF08;&#x4EE5;&#x5B57;&#x6BCD;&#x6811;&#x4E3A;&#x4F8B;&#xFF09;&#xFF1A;"></a>&#x57FA;&#x672C;&#x601D;&#x60F3;&#xFF08;&#x4EE5;&#x5B57;&#x6BCD;&#x6811;&#x4E3A;&#x4F8B;&#xFF09;&#xFF1A;</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#应用"><span class="nav-number">1.5.</span> <span class="nav-text"><a href="#&#x5E94;&#x7528;" class="headerlink" title="&#x5E94;&#x7528;"></a>&#x5E94;&#x7528;</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#海量数据情况下，trie树的应用"><span class="nav-number">1.6.</span> <span class="nav-text"><a href="#&#x6D77;&#x91CF;&#x6570;&#x636E;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;trie&#x6811;&#x7684;&#x5E94;&#x7528;" class="headerlink" title="&#x6D77;&#x91CF;&#x6570;&#x636E;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;trie&#x6811;&#x7684;&#x5E94;&#x7528;"></a>&#x6D77;&#x91CF;&#x6570;&#x636E;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;trie&#x6811;&#x7684;&#x5E94;&#x7528;</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2017 - 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Albert</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
